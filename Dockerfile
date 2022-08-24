@@ -1,5 +1,5 @@
 # @see https://github.com/rust-lang/docker-rust
-FROM alpine:3.15 as builder
+FROM alpine:3.16 as builder
 
 # install utilities
 RUN apk add --update alpine-sdk cmake clang protoc
@@ -13,11 +13,11 @@ ENV RUSTUP_HOME=/usr/local/rustup \
 RUN set -eux; \
     apkArch="$(apk --print-arch)"; \
     case "$apkArch" in \
-        x86_64) rustArch='x86_64-unknown-linux-musl'; rustupSha256='bdf022eb7cba403d0285bb62cbc47211f610caec24589a72af70e1e900663be9' ;; \
-        aarch64) rustArch='aarch64-unknown-linux-musl'; rustupSha256='89ce657fe41e83186f5a6cdca4e0fd40edab4fd41b0f9161ac6241d49fbdbbbe' ;; \
+        x86_64) rustArch='x86_64-unknown-linux-musl'; rustupSha256='95427cb0592e32ed39c8bd522fe2a40a746ba07afb8149f91e936cddb4d6eeac' ;; \
+        aarch64) rustArch='aarch64-unknown-linux-musl'; rustupSha256='7855404cdc50c20040c743800c947b6f452490d47f8590a4a83bc6f75d1d8eda' ;; \
         *) echo >&2 "unsupported architecture: $apkArch"; exit 1 ;; \
     esac; \
-    url="https://static.rust-lang.org/rustup/archive/1.24.3/${rustArch}/rustup-init"; \
+    url="https://static.rust-lang.org/rustup/archive/1.25.1/${rustArch}/rustup-init"; \
     wget "$url"; \
     echo "${rustupSha256} *rustup-init" | sha256sum -c -; \
     chmod +x rustup-init; \
@@ -35,7 +35,7 @@ WORKDIR /osmosismon
 COPY . /osmosismon
 RUN cargo build --release
 
-FROM alpine:3.15
+FROM alpine:3.16
 COPY --from=builder /osmosismon/target/release/osmosismon /usr/local/bin/osmosismon
 RUN chmod +x /usr/local/bin/osmosismon
 
