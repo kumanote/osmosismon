@@ -14,7 +14,7 @@ once_cell = "1.10.0"
 futures = "0.3"
 
 logger = { version = "0.1.0", git = "https://github.com/kumanote/logger-rs", branch = "main", features = ["airbrake"] }
-osmosis-grpc-client = { version = "12.0.0", git = "https://github.com/kumanote/osmosis-grpc-client-rs", tag = "v12.0.0" }
+osmosis-grpc-client = { version = "12.2.1", git = "https://github.com/kumanote/osmosis-grpc-client-rs", tag = "v12.2.1" }
 
 [dev-dependencies]
 tokio = { version = "1", features = ["full"] }

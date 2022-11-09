@@ -14,7 +14,7 @@ sha2 = "0.10.2"
 subtle-encoding = { version = "0.5", default-features = false, features = ["bech32-preview", "base64", "hex"] }
 
 logger = { version = "0.1.0", git = "https://github.com/kumanote/logger-rs", branch = "main", features = ["airbrake"] }
-osmosis-grpc-client = { version = "12.0.0", git = "https://github.com/kumanote/osmosis-grpc-client-rs", tag = "v12.0.0" }
+osmosis-grpc-client = { version = "12.2.1", git = "https://github.com/kumanote/osmosis-grpc-client-rs", tag = "v12.2.1" }
 
 channel = { path = "../channel" }
 osmosiscli = { path = "../osmosiscli" }

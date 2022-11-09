@@ -2,13 +2,13 @@
 FROM alpine:3.16 as builder
 
 # install utilities
-RUN apk add --update alpine-sdk cmake clang protoc
+RUN apk add --update alpine-sdk cmake clang protoc protobuf-dev
 RUN apk add --no-cache ca-certificates
 
 ENV RUSTUP_HOME=/usr/local/rustup \
     CARGO_HOME=/usr/local/cargo \
     PATH=/usr/local/cargo/bin:$PATH \
-    RUST_VERSION=1.63.0
+    RUST_VERSION=1.64.0
 
 RUN set -eux; \
     apkArch="$(apk --print-arch)"; \
